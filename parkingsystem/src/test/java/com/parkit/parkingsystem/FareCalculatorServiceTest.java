@@ -1,4 +1,4 @@
-package com.parkit.parkingsystem;
+ package com.parkit.parkingsystem;
 
 import com.parkit.parkingsystem.constants.Fare;
 import com.parkit.parkingsystem.constants.ParkingType;
@@ -109,7 +109,6 @@ public class FareCalculatorServiceTest {
         fareCalculatorService.calculateFare(ticket);
         assertEquals( (0.75 * Fare.CAR_RATE_PER_HOUR) , ticket.getPrice());
     }
-
     @Test
     public void calculateFareCarWithMoreThanADayParkingTime(){
         Date inTime = new Date();
@@ -123,19 +122,31 @@ public class FareCalculatorServiceTest {
         fareCalculatorService.calculateFare(ticket);
         assertEquals( (24 * Fare.CAR_RATE_PER_HOUR) , ticket.getPrice());
     }
-     @Test
-     public void calculateFareCarWithLessThirtyMinutesParkingTime(){
-        Date inTime = new Date();
-        inTime.setTime( System.currentTimeMillis() - ( 29 * 60 * 1000) );
-        Date outTime = new Date();
-        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR,false);
+		@Test
+	  	public void calculateFareBikeWithLessThan30minuteParkingTime(){
+     Date inTime = new Date();
+	   inTime.setTime(System.currentTimeMillis() - (30 * 60 * 1000));// 30 minutes parking time should give 0
+	   Date outTime = new Date();
+	   ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE, false);
 
-        ticket.setInTime(inTime);
-        ticket.setOutTime(outTime);
-        ticket.setParkingSpot(parkingSpot);
-        fareCalculatorService.calculateFare(ticket);
-        assertEquals(0 * ticket.getPrice(), Fare.CAR_RATE_PER_HOUR);
-    }
+	    ticket.setInTime(inTime);
+    	ticket.setOutTime(outTime);
+	     ticket.setParkingSpot(parkingSpot);
+	     fareCalculatorService.calculateFare(ticket);
+	     assertEquals((0), ticket.getPrice());
+		}
+		@Test
+	  public void calculateFareCarWithLessThan30minuteParkingTime(){
+     Date inTime = new Date();
+	   inTime.setTime(System.currentTimeMillis() - (30 * 60 * 1000));// 30 minutes parking time should give 0
+	   Date outTime = new Date();
+	   ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
 
-    }
+	     ticket.setInTime(inTime);
+    	 ticket.setOutTime(outTime);
+	     ticket.setParkingSpot(parkingSpot);
+	     fareCalculatorService.calculateFare(ticket);
+	     assertEquals((0), ticket.getPrice());
+
+}
 }

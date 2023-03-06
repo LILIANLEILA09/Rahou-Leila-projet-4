@@ -1,8 +1,10 @@
 package com.parkit.parkingsystem.model;
 
-import java.util.Calendar;
 import java.util.Date;
 
+/*
+ * Model for Ticket
+ */
 public class Ticket {
     private int id;
     private ParkingSpot parkingSpot;
@@ -12,50 +14,64 @@ public class Ticket {
     private Date outTime;
 
     public int getId() {
-        return id;
+	return id;
     }
 
     public void setId(int id) {
-        this.id = id;
+	this.id = id;
     }
 
     public ParkingSpot getParkingSpot() {
-        return parkingSpot;
+	return new ParkingSpot(this.parkingSpot.getId(), this.parkingSpot.getParkingType(),
+		this.parkingSpot.isAvailable());
     }
 
     public void setParkingSpot(ParkingSpot parkingSpot) {
-        this.parkingSpot = parkingSpot;
+	this.parkingSpot = new ParkingSpot(parkingSpot.getId(), parkingSpot.getParkingType(),
+		parkingSpot.isAvailable());
     }
 
     public String getVehicleRegNumber() {
-        return vehicleRegNumber;
+	String vehicleRegNumberCopy = this.vehicleRegNumber;
+	return vehicleRegNumberCopy;
     }
 
     public void setVehicleRegNumber(String vehicleRegNumber) {
-        this.vehicleRegNumber = vehicleRegNumber;
+	String newVehicleRegNumber = vehicleRegNumber;
+	this.vehicleRegNumber = newVehicleRegNumber;
     }
 
     public double getPrice() {
-        return price;
+	double priceCopy = this.price;
+	return priceCopy;
     }
 
     public void setPrice(double price) {
-        this.price = price;
+	double newPrice = price;
+	this.price = newPrice;
     }
 
     public Date getInTime() {
-        return inTime;
+	return new Date(this.inTime.getTime());
     }
 
     public void setInTime(Date inTime) {
-        this.inTime = inTime;
+	this.inTime = new Date(inTime.getTime());
     }
 
     public Date getOutTime() {
-        return outTime;
+	if (outTime == null) {
+	    return null;
+	} else {
+	    return new Date(this.outTime.getTime());
+	}
     }
 
     public void setOutTime(Date outTime) {
-        this.outTime = outTime;
+	if (outTime == null) {
+	    this.outTime = null;
+	} else {
+	    this.outTime = new Date(outTime.getTime());
+	}
     }
 }
