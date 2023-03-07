@@ -1,4 +1,5 @@
- package com.parkit.parkingsystem;
+
+package com.parkit.parkingsystem;
 
 import com.parkit.parkingsystem.constants.Fare;
 import com.parkit.parkingsystem.constants.ParkingType;
@@ -137,7 +138,7 @@ public class FareCalculatorServiceTest {
 		}
 		@Test
 	  public void calculateFareCarWithLessThan30minuteParkingTime(){
-     Date inTime = new Date();
+       Date inTime = new Date();
 	   inTime.setTime(System.currentTimeMillis() - (30 * 60 * 1000));// 30 minutes parking time should give 0
 	   Date outTime = new Date();
 	   ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);

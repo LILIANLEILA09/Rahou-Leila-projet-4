@@ -25,8 +25,8 @@ import com.parkit.parkingsystem.model.Ticket;
 
 	// Duration fixed to 24 hours (1440 minutes) when the Time Difference is more
 	// than 24 hours
-<span class="pc bpc" id="L28" title="1 of 2 branches missed.">	if (timeDiffInMinutes &gt; 1440) {</span>
-<span class="nc" id="L29">	    duration = 24;</span>
+<span class="fc bfc" id="L28" title="All 2 branches covered.">	if (timeDiffInMinutes &gt; 1440) {</span>
+<span class="fc" id="L29">	    duration = 24;</span>
 	} else {
 <span class="fc" id="L31">	    duration = timeDiffInMinutes / 60;</span>
 	}

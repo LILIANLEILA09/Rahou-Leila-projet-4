@@ -36,7 +36,7 @@ import com.parkit.parkingsystem.model.Ticket;
 <span class="fc" id="L36">	    con = dataBaseConfig.getConnection();</span>
 <span class="fc" id="L37">	    PreparedStatement ps = con.prepareStatement(DBConstants.SAVE_TICKET);</span>
 	    // ID, PARKING_NUMBER, VEHICLE_REG_NUMBER, PRICE, IN_TIME, OUT_TIME)
-	    // ps.setInt(1,ticket.getId());
+<span class="fc" id="L39">	    ps.setInt(1,ticket.getId());</span>
 <span class="fc" id="L40">	    ps.setInt(1, ticket.getParkingSpot().getId());</span>
 <span class="fc" id="L41">	    ps.setString(2, ticket.getVehicleRegNumber());</span>
 <span class="fc" id="L42">	    ps.setDouble(3, ticket.getPrice());</span>
@@ -126,7 +126,7 @@ import com.parkit.parkingsystem.model.Ticket;
 <span class="fc" id="L126">	    PreparedStatement ps = con.prepareStatement(DBConstants.GET_VEHICLE_REG_NUMBER);</span>
 <span class="fc" id="L127">	    ps.setString(1, vehicleRegNumber);</span>
 <span class="fc" id="L128">	    ResultSet rs = ps.executeQuery();</span>
-<span class="fc bfc" id="L129" title="All 2 branches covered.">	    if (rs.next()) {</span>
+<span class="pc bpc" id="L129" title="1 of 2 branches missed.">	    if (rs.next()) {</span>
 <span class="fc" id="L130">		String foundValue = rs.getString(&quot;VEHICLE_REG_NUMBER&quot;);</span>
 <span class="pc bpc" id="L131" title="1 of 2 branches missed.">		if (foundValue == null) {</span>
 <span class="nc" id="L132">		    return false;</span>
@@ -139,7 +139,7 @@ import com.parkit.parkingsystem.model.Ticket;
 	} finally {
 <span class="fc" id="L140">	    dataBaseConfig.closeConnection(con);</span>
 	}
-<span class="fc" id="L142">	return false;</span>
+<span class="nc" id="L142">	return false;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
