@@ -87,7 +87,7 @@ public class ParkingDataBaseIT {
 
         //Then
         assertEquals(0, ticket.getPrice());
-        assertEquals(1,parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR));
+        assertEquals(1,parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR ));
         assertNotNull(ticket.getOutTime());
     }
 
@@ -107,8 +107,8 @@ public class ParkingDataBaseIT {
         parkingService.processExitingVehicle();
         Ticket ticketExited = ticketDAO.getTicket("ABCDEF");
         //when
-
-
+           parkingService.processIncomingVehicle();
+           parkingService.processExitingVehicle();
         //Then
         assertEquals((24 * 1.5 * 0.95), ticketExited.getPrice());
         assertEquals(1,parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR));
