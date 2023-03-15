@@ -95,7 +95,7 @@ public class TicketDAO {
 
         try {
             con = dataBaseConfig.getConnection();
-            ps = con.prepareStatement(DBConstants.COUNT_VEHICLE__FREQUENCY);
+            ps = con.prepareStatement(DBConstants.COUNT_VEHICLE_NUMBER_OCCURENCE);
             ps.setString(1, vehicleRegNumber);
             rs = ps.executeQuery();
             if (rs.next()) {

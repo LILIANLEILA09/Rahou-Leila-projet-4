@@ -1,10 +1,8 @@
 package com.parkit.parkingsystem.model;
 
+import java.util.Calendar;
 import java.util.Date;
 
-/*
- * Model for Ticket
- */
 public class Ticket {
     private int id;
     private ParkingSpot parkingSpot;
@@ -14,64 +12,50 @@ public class Ticket {
     private Date outTime;
 
     public int getId() {
-	return id;
+        return id;
     }
 
     public void setId(int id) {
-	this.id = id;
+        this.id = id;
     }
 
     public ParkingSpot getParkingSpot() {
-	return new ParkingSpot(this.parkingSpot.getId(), this.parkingSpot.getParkingType(),
-		this.parkingSpot.isAvailable());
+        return parkingSpot;
     }
 
     public void setParkingSpot(ParkingSpot parkingSpot) {
-	this.parkingSpot = new ParkingSpot(parkingSpot.getId(), parkingSpot.getParkingType(),
-		parkingSpot.isAvailable());
+        this.parkingSpot = parkingSpot;
     }
 
     public String getVehicleRegNumber() {
-	String vehicleRegNumberCopy = this.vehicleRegNumber;
-	return vehicleRegNumberCopy;
+        return vehicleRegNumber;
     }
 
     public void setVehicleRegNumber(String vehicleRegNumber) {
-	String newVehicleRegNumber = vehicleRegNumber;
-	this.vehicleRegNumber = newVehicleRegNumber;
+        this.vehicleRegNumber = vehicleRegNumber;
     }
 
     public double getPrice() {
-	double priceCopy = this.price;
-	return priceCopy;
+        return price;
     }
 
     public void setPrice(double price) {
-	double newPrice = price;
-	this.price = newPrice;
+        this.price = price;
     }
 
     public Date getInTime() {
-	return new Date(this.inTime.getTime());
+        return inTime;
     }
 
     public void setInTime(Date inTime) {
-	this.inTime = new Date(inTime.getTime());
+        this.inTime = inTime;
     }
 
     public Date getOutTime() {
-	if (outTime == null) {
-	    return null;
-	} else {
-	    return new Date(this.outTime.getTime());
-	}
+        return outTime;
     }
 
     public void setOutTime(Date outTime) {
-	if (outTime == null) {
-	    this.outTime = null;
-	} else {
-	    this.outTime = new Date(outTime.getTime());
-	}
+        this.outTime = outTime;
     }
 }
